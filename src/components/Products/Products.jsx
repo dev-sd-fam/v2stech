@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import useFetchData from "../../hooks/useFetchData";
 
 import "./product.css";
+import Loader from "../loader/Loader";
 
 const Products = () => {
   const { data, loading, error } = useFetchData("products");
@@ -21,26 +22,17 @@ const Products = () => {
 
   // loader show while data fetching
   if (loading) {
-    return (
-      <div className="loader">
-        <svg className="circular" viewBox="25 25 50 50">
-          <circle
-            className="path"
-            cx="50"
-            cy="50"
-            r="20"
-            fill="none"
-            strokeWidth="2"
-            strokeMiterlimit="10"
-          ></circle>
-        </svg>
-      </div>
-    );
+    return <Loader/>
   }
 
   // show error if data not found
   if (error) {
     return <p>{error}</p>;
+  }
+
+  // show message if no data found after filtering
+  if (filteredData.length === 0) {
+    return <p>No products found.</p>;
   }
 
   return (
