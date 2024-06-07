@@ -37,21 +37,23 @@ const Filter = () => {
 
   return (
     <div className="filter">
-      <input
-        type="text"
-        placeholder="Search products..."
-        value={query}
-        onChange={handleChange}
-      />
+      <div className="filter-container">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={query}
+          onChange={handleChange}
+        />
 
-      <div className="select">
-        <select value={category} onChange={handleCategoryChange}>
-          {categoryOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        <div className="select">
+          <select value={category} onChange={handleCategoryChange}>
+            {categoryOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     </div>
   );
